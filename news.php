@@ -22,7 +22,7 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/stylenew.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -62,63 +62,90 @@
 					<input type="submit" formaction="blog.php" id="head-bt" style="margin-left: 50px;" value="Blogs">
 				</div>
 				</form>
+				<form>
+				<div class="head-bt-right" style="margin-left: 50px; color: #F58120;">
+				<?php	
+					session_start();
+					$con=mysqli_connect("localhost","root","","digitalintelligence");
+					$res=mysqli_query($con,"select * from students");
+						
+					if(isset($_SESSION['email']))
+					{
+						echo $_SESSION['email'];
+				?>
+					(<a href="logout.php" style="color: white">Logout</a>)
+				<?php
+					}
+					else
+					{
+				?>
+					Welcome Guest, (<a href="login.html"><font color="white">Login</font></a>|<a href="register.html"><font color="white">Register</font></a>)
+				<?php
+					}
+				?>
+				</div>
+				</form>
 			</div>
 		</div>	
     <!-- Header End -->
 	
-	<!-- Account Details Start -->
-        <div id ="account" class="neumorphic-div" >
-			<div class="row">
-				<div id="img">
-					<img id="profile-pic" src="img/user1.png" width="100px" height="100px">
+	<!-- Events Start -->
+	<div class="row">
+		<div id="eventlinks" align="center">
+			<form>
+				<div class="head-bt-left">
+					<input type="submit" formaction="magazines.html" id="event-bt"  value="Magazines">
 				</div>
-					<div id="txt">
-						<?php	
-							session_start();
-							$con=mysqli_connect("localhost","root","","digitalintelligence");
-							$res=mysqli_query($con,"select * from students");
-								
-							if(isset($_SESSION['email']))
-							{
-								echo "<h1 style='color:#2C363F'>Welcome ".$_SESSION['email'];
-							?>
-							</h1>
-					</div>
-							<div>
-								<form>
-									<input type ="submit" formaction="logout.php" id="neumorphic-button" value="Logout" style="margin-left: 900px; margin-top: 72px; font-size: 22px; color:#E1E6E1;">
-								</form>
-							</div>
-							<?php
-							}
-							else
-							{
-							?>
-							<div>
-								<h1 style="color:#2C363F">Welcome Guest!</h1>
-							</div>
-							<div>
-								<form>
-									<input type ="submit" formaction="login.html" id="neumorphic-button" value="Login" style=" margin-left: 1500px;  font-size: 22px; color:#E1E6E1;"></span>
-									<input type ="submit" formaction="register.html" id="neumorphic-button" value="Register" style=" font-size: 22px; color:#E1E6E1;">
-								</form>
-							</div>	
-							<?php
-							}
-							?>
+				</form>
+				<form>
+				<div class="head-bt-left">
+					<input type="submit" formaction="news.html" id="event-bt"  value="News">
+				</div>
+				</form>
+				<form>
+				<div class="head-bt-left">
+					<input type="submit" formaction="blog.html" id="event-bt"  value="Blogs">
+				</div>
+				</form>
+				<form>
+				<div class="head-bt-right">
+					<input type="submit" formaction="social.html" id="event-bt"  value="Social Media Channels">
+				</div>
+				</form>
+				<form>
+				<div class="head-bt-right">
+					<input type="submit" formaction="community.html" id="event-bt"  value="Community">
+				</div>
+			</form>
+		</div>
+        <div class="events-neumorphic-div-body">
+			<div class="row">
+				<div id="news1" align="center"><br><br><br>
+					<h1 id="event-head1">News Headline</h1>
+				</div>
+				<div id="news2" align="center"><br><br><br>
+					<h1 id="event-head2">News Headline</h1>
+				</div>
+				<div id="news1" align="center"><br><br><br>
+					<h1 id="event-head1">News Headline</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div id="news2" align="center"><br><br><br>
+					<h1 id="event-head2">News Headline</h1>		
+				</div>
+				<div id="news1" align="center"><br><br><br>
+					<h1 id="event-head1">News Headline</h1>
+				</div>
+				<div id="news2" align="center"><br><br><br>
+					<h1 id="event-head2">News Headline</h1>
+				</div>
 			</div>
 		</div>
-    <!-- Account Details End -->
-
-    <!-- Carousel Start -->
-	<div class="neumorphic-div-body">
-		<div>
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-			<p id="heading">Conquer the Digital World with</p>
-			<p id="heading">Digital Intelligence</p>
-		</div>
 	</div>
-    <!-- Carousel End -->
+    <!--Events Details End -->
+
+    
 
     <!-- Footer Start -->
         <div id ="footer" class="neumorphic-div" >
@@ -148,6 +175,7 @@
 			</div>
 		</div>
 		
+    
     <div class="footer-neumorphic-div" style="border-color: rgba(256, 256, 256, .1) !important;">
         <div class="row">
             <div style="margin-top: 40px; margin-left: 515px">

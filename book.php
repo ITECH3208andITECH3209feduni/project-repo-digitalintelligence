@@ -36,12 +36,12 @@
 				</form>
 				<form>
 				<div class="head-bt-left">
-					<input type="submit" formaction="course.html" id="head-bt" style="margin-left: 50px;" value="Digital Intelligence">
+					<input type="submit" formaction="course.php" id="head-bt" style="margin-left: 50px;" value="Digital Intelligence">
 				</div>
 				</form>
 				<form>
 				<div class="head-bt-left">
-					<input type="submit" formaction="about.html" id="head-bt" style="margin-left: 50px;" value="About">
+					<input type="submit" formaction="about.php" id="head-bt" style="margin-left: 50px;" value="About">
 				</div>
 				</form>
 				<div id="header">
@@ -49,17 +49,40 @@
 				</div>
 				<form>
 				<div class="head-bt-right">
-					<input type="submit" formaction="events.html" id="head-bt" style="margin-left: 150px;" value="Events">
+					<input type="submit" formaction="events.php" id="head-bt" style="margin-left: 150px;" value="Events">
 				</div>
 				</form>
 				<form>
 				<div class="head-bt-right">
-					<input type="submit" formaction="support.html" id="head-bt" style="margin-left: 50px;" value="Student Support">
+					<input type="submit" formaction="support.php" id="head-bt" style="margin-left: 50px;" value="Student Support">
 				</div>
 				</form>
 				<form>
 				<div class="head-bt-right">
-					<input type="submit" formaction="blog.html" id="head-bt" style="margin-left: 50px;" value="Blogs">
+					<input type="submit" formaction="blog.php" id="head-bt" style="margin-left: 50px;" value="Blogs">
+				</div>
+				</form>
+				<form>
+				<div class="head-bt-right" style="margin-left: 50px; color: #F58120;">
+				<?php	
+					session_start();
+					$con=mysqli_connect("localhost","root","","digitalintelligence");
+					$res=mysqli_query($con,"select * from students");
+						
+					if(isset($_SESSION['email']))
+					{
+						echo $_SESSION['email'];
+				?>
+					(<a href="logout.php" style="color: white">Logout</a>)
+				<?php
+					}
+					else
+					{
+				?>
+					Welcome Guest, (<a href="login.html"><font color="white">Login</font></a>|<a href="register.html"><font color="white">Register</font></a>)
+				<?php
+					}
+				?>
 				</div>
 				</form>
 			</div>
@@ -67,24 +90,50 @@
     <!-- Header End -->
 
     <!-- Form Start -->
-	<div class="login-neumorphic-div-body">
-		<div class="row">
-			<div id="loginform" align="center"><br><br><br>
-				<h1 id="login-head">Login</h1>
-				<form action="login.php" method="post">
-					<font size="5">Email:</font>
-					<input type="input" id="textbox" name="email" style="margin-top: 80px; margin-left: 68px;" required><br>
-					<font size="5">Password:</font>
-					<input type="password" id="textbox" name="password" style=" margin-left: 18px;" required><br>
-					<input type ="submit" name="submit" id="neumorphic-button-login" value="Login" style=" font-size: 22px; color:#E1E6E1;">
+	<div class="book-neumorphic-div-body">
+		<center><br><br><p id="registerform-head">Book Sessions</p></center>
+		<div id="booksess" >
+			<div class="row">
+				<div id="img">
+					<img id="profile-pic" src="img/user.png" width="100px" height="100px">
+				</div>
+				<div align="center"><br><br><br>
+					<h3 id="name">Marketa Mojzisova</h3>
+				</div>
+				<div align="center"><br><br><br>
+					<h3 id="name">Digital Intelligence</h3>
+				</div>
+				<div align="center"><br><br><br>
+					<form><input type="submit" formaction="date.php" value="Book Time" id="neumorphic-button-book" style="color: #2C363F;">
+				</div>
 			</div>
-				</form>
-			<div id="register" align="center"><br><br><br>
-				<h1 id="register-head">Register</h1>
-				<form>
-					<input type ="submit" formaction="register.html" id="neumorphic-button-register" value="Register with ATMC Credentials" style=" font-size: 18px; color:#E1E6E1;">
-					<br><input type ="submit" formaction="register.html" id="neumorphic-button-register" value="Register a New Account" style=" font-size: 18px; color:#E1E6E1;">
-				</form>
+			<div class="row">
+				<div id="img">
+					<img id="profile-pic" src="img/user.png" width="100px" height="100px">
+				</div>
+				<div align="center"><br><br><br>
+					<h3 id="name">Tabinda Khan</h3>
+				</div>
+				<div align="center"><br><br><br>
+					<h3 id="name" style="margin-left:115px;">Digital Intelligence</h3>
+				</div>
+				<div align="center"><br><br><br>
+					<form><input type="submit" formaction="date.php" value="Book Time" id="neumorphic-button-book" style="color: #2C363F;">
+				</div>
+			</div>
+			<div class="row">
+				<div id="img">
+					<img id="profile-pic" src="img/user.png" width="100px" height="100px">
+				</div>
+				<div align="center"><br><br><br>
+					<h3 id="name">Anirudh Phadke</h3>
+				</div>
+				<div align="center"><br><br><br>
+					<h3 id="name" style="margin-left:85px;">Digital Intelligence</h3>
+				</div>
+				<div align="center"><br><br><br>
+					<form><input type="submit" formaction="date.php" value="Book Time" id="neumorphic-button-book" style="color: #2C363F;">
+				</div>
 			</div>
 		</div>
 	</div>

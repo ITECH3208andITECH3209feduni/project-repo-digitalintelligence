@@ -36,12 +36,12 @@
 				</form>
 				<form>
 				<div class="head-bt-left">
-					<input type="submit" formaction="course.html" id="head-bt" style="margin-left: 50px;" value="Digital Intelligence">
+					<input type="submit" formaction="course.php" id="head-bt" style="margin-left: 50px;" value="Digital Intelligence">
 				</div>
 				</form>
 				<form>
 				<div class="head-bt-left">
-					<input type="submit" formaction="about.html" id="head-bt" style="margin-left: 50px;" value="About">
+					<input type="submit" formaction="about.php" id="head-bt" style="margin-left: 50px;" value="About">
 				</div>
 				</form>
 				<div id="header">
@@ -49,46 +49,80 @@
 				</div>
 				<form>
 				<div class="head-bt-right">
-					<input type="submit" formaction="events.html" id="head-bt" style="margin-left: 150px;" value="Events">
+					<input type="submit" formaction="events.php" id="head-bt" style="margin-left: 150px;" value="Events">
 				</div>
 				</form>
 				<form>
 				<div class="head-bt-right">
-					<input type="submit" formaction="support.html" id="head-bt" style="margin-left: 50px;" value="Student Support">
+					<input type="submit" formaction="support.php" id="head-bt" style="margin-left: 50px;" value="Student Support">
 				</div>
 				</form>
 				<form>
 				<div class="head-bt-right">
-					<input type="submit" formaction="blog.html" id="head-bt" style="margin-left: 50px;" value="Blogs">
+					<input type="submit" formaction="blog.php" id="head-bt" style="margin-left: 50px;" value="Blogs">
+				</div>
+				</form>
+				<form>
+				<div class="head-bt-right" style="margin-left: 50px; color: #F58120;">
+				<?php	
+					session_start();
+					$con=mysqli_connect("localhost","root","","digitalintelligence");
+					$res=mysqli_query($con,"select * from students");
+						
+					if(isset($_SESSION['email']))
+					{
+						echo $_SESSION['email'];
+				?>
+					(<a href="logout.php" style="color: white">Logout</a>)
+				<?php
+					}
+					else
+					{
+				?>
+					Welcome Guest, (<a href="login.html"><font color="white">Login</font></a>|<a href="register.html"><font color="white">Register</font></a>)
+				<?php
+					}
+				?>
 				</div>
 				</form>
 			</div>
 		</div>	
     <!-- Header End -->
 
-    <!-- Form Start -->
-	<div class="login-neumorphic-div-body">
+	<!-- Course Start -->
+
+	<div class="book-neumorphic-div-body" style="height:950px;">
+		<center><br><br><p id="registerform-head">Digital Intelligence</p></center>
 		<div class="row">
-			<div id="loginform" align="center"><br><br><br>
-				<h1 id="login-head">Login</h1>
-				<form action="login.php" method="post">
-					<font size="5">Email:</font>
-					<input type="input" id="textbox" name="email" style="margin-top: 80px; margin-left: 68px;" required><br>
-					<font size="5">Password:</font>
-					<input type="password" id="textbox" name="password" style=" margin-left: 18px;" required><br>
-					<input type ="submit" name="submit" id="neumorphic-button-login" value="Login" style=" font-size: 22px; color:#E1E6E1;">
+			<div id="news1" align="center" style="margin-left:750px;"><br><br><br>
+				<a href="unit1.php" id="unit"><h1 id="event-head1">Unit 1</h1></a><br><br>
 			</div>
-				</form>
-			<div id="register" align="center"><br><br><br>
-				<h1 id="register-head">Register</h1>
-				<form>
-					<input type ="submit" formaction="register.html" id="neumorphic-button-register" value="Register with ATMC Credentials" style=" font-size: 18px; color:#E1E6E1;">
-					<br><input type ="submit" formaction="register.html" id="neumorphic-button-register" value="Register a New Account" style=" font-size: 18px; color:#E1E6E1;">
-				</form>
+			<div id="news2" align="center"><br><br><br>
+				<a href="unit2.php" id="unit"><h1 id="event-head2">Unit 2</h1></a><br><br>
+			</div>
+			<div id="news1" align="center"><br><br><br>
+				<a href="unit3.php" id="unit"><h1 id="event-head1">Unit 3</h1></a><br><br>
+			</div>
+		</div>
+		<div class="row">
+			<div id="news2" align="center" style="margin-left:750px;"><br><br><br>
+				<a href="unit4.php" id="unit"><h1 id="event-head2">Unit 4</h1></a><br><br>
+			</div>
+			<div id="news1" align="center"><br><br><br>
+				<a href="unit5.php" id="unit"><h1 id="event-head1">Unit 5</h1></a><br><br>
+			</div>
+			<div id="news2" align="center"><br><br><br>
+				<a href="unit6.php" id="unit"><h1 id="event-head2">Unit 6</h1></a><br><br>
+			</div>
+		</div>
+		<div class="row">
+			<div id="news2" align="center" style="height: 250px; margin-left: 1112px;"><br><br><br>
+				<a href="book.php" id="unit"><h1 style="color: #F58120;">Book</br>Sessions</h1></a><br><br>
 			</div>
 		</div>
 	</div>
-    <!-- Form End -->
+
+	<!-- Course End -->
 
     <!-- Footer Start -->
     <div class="footer-neumorphic-div" style="border-color: rgba(256, 256, 256, .1) !important;">

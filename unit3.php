@@ -36,12 +36,12 @@
 				</form>
 				<form>
 				<div class="head-bt-left">
-					<input type="submit" formaction="course.html" id="head-bt" style="margin-left: 50px;" value="Digital Intelligence">
+					<input type="submit" formaction="course.php" id="head-bt" style="margin-left: 50px;" value="Digital Intelligence">
 				</div>
 				</form>
 				<form>
 				<div class="head-bt-left">
-					<input type="submit" formaction="about.html" id="head-bt" style="margin-left: 50px;" value="About">
+					<input type="submit" formaction="about.php" id="head-bt" style="margin-left: 50px;" value="About">
 				</div>
 				</form>
 				<div id="header">
@@ -49,46 +49,70 @@
 				</div>
 				<form>
 				<div class="head-bt-right">
-					<input type="submit" formaction="events.html" id="head-bt" style="margin-left: 150px;" value="Events">
+					<input type="submit" formaction="events.php" id="head-bt" style="margin-left: 150px;" value="Events">
 				</div>
 				</form>
 				<form>
 				<div class="head-bt-right">
-					<input type="submit" formaction="support.html" id="head-bt" style="margin-left: 50px;" value="Student Support">
+					<input type="submit" formaction="support.php" id="head-bt" style="margin-left: 50px;" value="Student Support">
 				</div>
 				</form>
 				<form>
 				<div class="head-bt-right">
-					<input type="submit" formaction="blog.html" id="head-bt" style="margin-left: 50px;" value="Blogs">
+					<input type="submit" formaction="blog.php" id="head-bt" style="margin-left: 50px;" value="Blogs">
+				</div>
+				</form>
+				<form>
+				<div class="head-bt-right" style="margin-left: 50px; color: #F58120;">
+				<?php	
+					session_start();
+					$con=mysqli_connect("localhost","root","","digitalintelligence");
+					$res=mysqli_query($con,"select * from students");
+						
+					if(isset($_SESSION['email']))
+					{
+						echo $_SESSION['email'];
+				?>
+					(<a href="logout.php" style="color: white">Logout</a>)
+				<?php
+					}
+					else
+					{
+				?>
+					Welcome Guest, (<a href="login.html"><font color="white">Login</font></a>|<a href="register.html"><font color="white">Register</font></a>)
+				<?php
+					}
+				?>
 				</div>
 				</form>
 			</div>
 		</div>	
     <!-- Header End -->
 
-    <!-- Form Start -->
-	<div class="login-neumorphic-div-body">
-		<div class="row">
-			<div id="loginform" align="center"><br><br><br>
-				<h1 id="login-head">Login</h1>
-				<form action="login.php" method="post">
-					<font size="5">Email:</font>
-					<input type="input" id="textbox" name="email" style="margin-top: 80px; margin-left: 68px;" required><br>
-					<font size="5">Password:</font>
-					<input type="password" id="textbox" name="password" style=" margin-left: 18px;" required><br>
-					<input type ="submit" name="submit" id="neumorphic-button-login" value="Login" style=" font-size: 22px; color:#E1E6E1;">
-			</div>
-				</form>
-			<div id="register" align="center"><br><br><br>
-				<h1 id="register-head">Register</h1>
-				<form>
-					<input type ="submit" formaction="register.html" id="neumorphic-button-register" value="Register with ATMC Credentials" style=" font-size: 18px; color:#E1E6E1;">
-					<br><input type ="submit" formaction="register.html" id="neumorphic-button-register" value="Register a New Account" style=" font-size: 18px; color:#E1E6E1;">
-				</form>
-			</div>
+	<!-- Course Start -->
+
+	<div class="book-neumorphic-div-body">
+		<center><br><br><p id="registerform-head">Unit 1</p></center>
+		<div id="booksess" style="margin-left: 250px;">
+		<iframe src="https://player.vimeo.com/video/302609231?h=d92fd2f0d5" style="position:absolute;top:350px;left:780px;width:40%;height:35%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+		</iframe>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<center><p style="color: white;"><a href="https://vimeo.com/302609231">Sample Confidence on Video Class for Entrepreneurs</a> from 
+		<a href="https://vimeo.com/brendaadelman">Brenda Adelman</a> on 
+		<a href="https://vimeo.com">Vimeo</a>.</p></center>
+		</div>
+		<script src="https://player.vimeo.com/api/player.js"></script>
+	</div>
+	<div class="book-neumorphic-div-body">
+		<center><br><br><p id="registerform-head">Student Quizzes and Submissions</p></center>
+		<div id="booksess" style="margin-left: 250px;">
+			<center><br><br><br><br><br><br><br><br><br><br>					
+				<p id="event-head2" style="font-size: 80px;">Coming Soon!</p><br><br>
+			</center>
 		</div>
 	</div>
-    <!-- Form End -->
+
+	<!-- Course End -->
 
     <!-- Footer Start -->
     <div class="footer-neumorphic-div" style="border-color: rgba(256, 256, 256, .1) !important;">
