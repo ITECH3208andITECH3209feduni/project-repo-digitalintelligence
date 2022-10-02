@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -18,11 +19,70 @@
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!--color css-->
     <link rel="stylesheet" id="triggerColor" href="assets/css/triggerplate/color-0.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<!--<script>
 	
+		var date= new Date();
+		var tdate= date.getDate();
+		var tmonth= date.getMonth()+1;
+		var tyear= date.getUTCFullYear();
+		if (tmonth<10)
+		{
+			tmonth="0"+tmonth;
+		}
+		if (tdate<10)
+		{
+			tdate="0"+tdate;
+		}
+		var curdate = tyear + "-" + tmonth + "-" + tdate;
+		
+	
+	</script>-->
+	
+<style>
+
+html,body{
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	overflow-x: hidden;
+}
+
+#supportform {
+	margin-bottom: 200px;
+	width: 800px;
+	height: 400px;
+	color: #2C363F;
+	border-radius: 30px;
+	background: #ffdda6;
+	align: center;
+}
+
+#textbox{
+	border-radius: 10px;
+	border: none;
+	height: 40px;
+	width: 280px;
+	background: #f5f3f2;	
+	margin-bottom: 30px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align: center;
+}
+
+
+
+</style>
+
 </head>
 
 <body>
@@ -70,7 +130,7 @@
 											{
 											?>
 												<li><a href="index2.php">Home</a></li>
-												<li><a href="course_details.php">Courses</a>
+												<li class="active"><a href="course_details.php">Courses</a>
 													<ul class="submenu">
 														<li><a href="DI_main.php">Digital Intelligence</a></li>
 														<li><a href="course_details.php">Growth Mindset</a></li>
@@ -80,7 +140,7 @@
 													</ul>
 												</li>
 												<li><a href="team.php">Team</a></li>
-												<li class="active"><a href="events.php">Events</a></li>
+												<li><a href="events.php">Events</a></li>
 												<li><a href="news.php">News</a>
 												</li>
 												<li><a href="about.php">About</a></li>
@@ -120,8 +180,6 @@
                                 </nav>
                             </div>
                         </div>
-
-						
                     </div>
                 </div>
             </div>
@@ -129,84 +187,130 @@
         <!-- header bottom area end -->
     </header>
     <!-- header area end -->
-
-<!-- body overlay area start -->
+	
+	<!-- body overlay area start -->
     <div class="body_overlay"></div>
     <!-- body overlay area end -->
     <!-- crumbs area start -->
     <div class="crumbs-area">
         <div class="container">
             <div class="crumb-content">
-                <h4 class="crumb-title">All Events</h4>
+                <h4 class="crumb-title">Book Time Slot</h4>
             </div>
         </div>
     </div>
     <!-- crumbs area end -->
+	
+    	
+    <!-- Form Start -->
+	
+	<div class="register-neumorphic-div-body" style="background-color:#e3e2e1;">
+		<div class="row">
+			<div class="col-md-10 offset-md-1" style="margin-top:70px;">
+				<div class="cnt-title">
+				<?php 
+				$id=$_POST['id'];
+				$date=$_POST['date'];
+				$time=$_POST['time'];
+				$sid = $_SESSION['student_id'];	
+				$email = $_SESSION['email'];
+				$con=mysqli_connect("localhost","root","","digitalintelligence");
+				$result=mysqli_query($con,"select * from tutors where id='$id';");
+				$row=mysqli_fetch_array($result);
+				
+				$tid=$row['id'];
+				$tname=$row['name'];
+				$tpro=$row['profile_pic'];
+				$tcourse=$row['course'];
+				$slot1=$row['slot1'];
+				$slot2=$row['slot2'];
+				$slot3=$row['slot3'];
+				$slot4=$row['slot4'];
+				$slot5=$row['slot5'];
+				$target_dir="assets/images/team/";
+				$target_file=$target_dir.$tpro;
+				if(file_exists($target_file))
+				{
+					$tpro=$row['profile_pic'];
+					$target_file=$target_dir.$tpro;
+				}
+				else
+				{
+					$tpro="pro.png";
+					$target_file=$target_dir.$tpro;
+				}
+				
+				echo "<h4><span>Your Session with ".$tname."</span></h4>";
+				echo "<br><img src='".$target_file."' style='width:220px; height: 200px; ' alt='image'>"; 
 
-    <!-- events area start -->
-    <div class="event-area  pt--120 pb--80">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="section-title">
-                        <span class="text-uppercase">Join with us</span>
-                        <h2>Upcoming Events to </h2> 
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="media align-items-center mb-5">
-                        <div class="media-head primary-bg">
-                            <span><sub>MAR</sub>25</span>
-                            <p>2018</p>
-                        </div>
-                        <div class="media-body">
-                            <h4><a href="#">Affiliate Marketing</a></h4>
-                            <p><i class="fa fa-clock-o"></i>05:23 AM - 09:23 AM</p>
-                        </div>
-                    </div> <!-- media -->
-                </div><!-- col-md-6 -->
-                <div class="col-md-6">
-                    <div class="media align-items-center mb-5">
-                        <div class="media-head primary-bg">
-                            <span><sub>OCT</sub>25</span>
-                            <p>2018</p>
-                        </div>
-                        <div class="media-body">
-                            <h4><a href="#">Facebook Marketing</a></h4>
-                            <p><i class="fa fa-clock-o"></i>05:23 AM - 09:23 AM</p>
-                        </div>
-                    </div> <!-- media -->
-                </div><!-- col-md-6 --> 
-                <div class="col-md-6">
-                    <div class="media align-items-center mb-5">
-                        <div class="media-head primary-bg">
-                            <span><sub>NOV</sub>25</span>
-                            <p>2018</p>
-                        </div>
-                        <div class="media-body">
-                            <h4><a href="#">Edustar Autumn</a></h4>
-                            <p><i class="fa fa-clock-o"></i>05:23 AM - 09:23 AM</p>
-                        </div>
-                    </div> <!-- media -->
-                </div><!-- col-md-6 -->  
-                <div class="col-md-6">
-                    <div class="media align-items-center mb-5">
-                        <div class="media-head primary-bg">
-                            <span><sub>DEC</sub>25</span>
-                            <p>2018</p>
-                        </div>
-                        <div class="media-body">
-                            <h4><a href="#">Workshop PHP</a></h4>
-                            <p><i class="fa fa-clock-o"></i>05:23 AM - 09:23 AM</p>
-                        </div>
-                    </div> <!-- media -->
-                </div><!-- col-md-6 -->   
-            </div><!-- row -->
-        </div><!-- container -->
-    </div><!-- event-area -->
-    <!-- events area end -->
+				?>
+				</div>
+			</div>	
+			<div  class="col-md-10 offset-md-3" >
+				<div style="margin-left:230px;">
+					<div id="supportform" align="center">
+							<div class="rows">
+								<font color="#F58120">
+								<?php
+								$result2=mysqli_query($con,"select * from bookings where faculty_id='$id';");
+								
+								/*if(mysqli_num_rows($result2)>0)
+								{
+									while($row2=mysqli_fetch_array($result2))
+									{
+										if ($row2['timeslot']==$time && $row2['date']==$date)
+										{
+											echo "<br><br><br><br><h4>There is an existing booking made for</h4>";
+											echo "<h4>".$time." on ".$date." you selected</h4>";
+											echo "</font>";
+											echo "</div><br>";
+											echo "<form action='book_session.php'>";
+											echo "<br><br><input type ='submit' class='btn btn-dark btn-round' value='Go Back' name='submit' style=' font-size: 18px; color:#E1E6E1;'>";
+											echo "</form>";
+											break;							
+										}
+										else
+										{
+											continue;
+										}
+									}
+								}*/
+								if (mysqli_num_rows($result2)<1)
+								{
+									$ins = "INSERT INTO `bookings` (`booking_id`, `timeslot`, `date`, `faculty_id`, `student_id`) VALUES (NULL, '$time', '$date', '$tid', '$sid');"	;
+									if(mysqli_query($con,$ins))
+									{
+										echo "<br><br><br><br><h4>Your Session with ".$tname." has been booked successfully</h4>";
+										echo "<h4>At ".$time." on ".$date." </h4>";
+										echo "</font>";
+										echo "</div><br>";
+										echo "<form action='DI_main.php'>";
+										echo "<br><br><input type ='submit' class='btn btn-dark btn-round' value='Book' name='submit' style=' font-size: 18px; color:#E1E6E1;'>";
+										echo "</form>";
+									}
+									
+								}
+								
+								
+								?>
+								
+								
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- Form End -->
+	<script>
+	config = 
+		{
+			minDate: "today",
+			maxDate: new Date().fp_incr(28) // 14 days from now
+		}
+	
+		flatpickr("input[type=date]", config);
+	</script>
+
 
 <?php
 include("footer.php");

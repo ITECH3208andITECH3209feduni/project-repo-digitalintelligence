@@ -80,8 +80,8 @@
 													</ul>
 												</li>
 												<li><a href="team.php">Team</a></li>
-												<li class="active"><a href="events.php">Events</a></li>
-												<li><a href="news.php">News</a>
+												<li><a href="events.php">Events</a></li>
+												<li class="active"><a href="news.php">News</a>
 												</li>
 												<li><a href="about.php">About</a></li>
 												<li><a href="support.php">Student Support</a></li></font>
@@ -129,7 +129,7 @@
         <!-- header bottom area end -->
     </header>
     <!-- header area end -->
-
+	
 <!-- body overlay area start -->
     <div class="body_overlay"></div>
     <!-- body overlay area end -->
@@ -137,77 +137,79 @@
     <div class="crumbs-area">
         <div class="container">
             <div class="crumb-content">
-                <h4 class="crumb-title">All Events</h4>
+                <h4 class="crumb-title">Recent Updates</h4>
             </div>
         </div>
     </div>
     <!-- crumbs area end -->
 
-    <!-- events area start -->
-    <div class="event-area  pt--120 pb--80">
+ <!-- news area start -->
+    <div class="feature-blog  pt--120 pb--70">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <div class="section-title">
-                        <span class="text-uppercase">Join with us</span>
-                        <h2>Upcoming Events to </h2> 
+                        <span class="text-uppercase">Top stories</span>
+                        <h2>News</h2> 
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <div class="media align-items-center mb-5">
-                        <div class="media-head primary-bg">
-                            <span><sub>MAR</sub>25</span>
-                            <p>2018</p>
-                        </div>
-                        <div class="media-body">
-                            <h4><a href="#">Affiliate Marketing</a></h4>
-                            <p><i class="fa fa-clock-o"></i>05:23 AM - 09:23 AM</p>
-                        </div>
-                    </div> <!-- media -->
-                </div><!-- col-md-6 -->
-                <div class="col-md-6">
-                    <div class="media align-items-center mb-5">
-                        <div class="media-head primary-bg">
-                            <span><sub>OCT</sub>25</span>
-                            <p>2018</p>
-                        </div>
-                        <div class="media-body">
-                            <h4><a href="#">Facebook Marketing</a></h4>
-                            <p><i class="fa fa-clock-o"></i>05:23 AM - 09:23 AM</p>
-                        </div>
-                    </div> <!-- media -->
-                </div><!-- col-md-6 --> 
-                <div class="col-md-6">
-                    <div class="media align-items-center mb-5">
-                        <div class="media-head primary-bg">
-                            <span><sub>NOV</sub>25</span>
-                            <p>2018</p>
-                        </div>
-                        <div class="media-body">
-                            <h4><a href="#">Edustar Autumn</a></h4>
-                            <p><i class="fa fa-clock-o"></i>05:23 AM - 09:23 AM</p>
-                        </div>
-                    </div> <!-- media -->
-                </div><!-- col-md-6 -->  
-                <div class="col-md-6">
-                    <div class="media align-items-center mb-5">
-                        <div class="media-head primary-bg">
-                            <span><sub>DEC</sub>25</span>
-                            <p>2018</p>
-                        </div>
-                        <div class="media-body">
-                            <h4><a href="#">Workshop PHP</a></h4>
-                            <p><i class="fa fa-clock-o"></i>05:23 AM - 09:23 AM</p>
-                        </div>
-                    </div> <!-- media -->
-                </div><!-- col-md-6 -->   
-            </div><!-- row -->
-        </div><!-- container -->
-    </div><!-- event-area -->
-    <!-- events area end -->
-
+                <div class="blog-carousel owl-carousel card-deck">                     
+                  <div class="card mb-5"> 
+                    <img class="card-img-top" src="assets/images/blog/blog-thumbnail1.jpg" alt="image">
+                    <div class="card-body p-25"> 
+                        <ul class="list-inline primary-color mb-3">
+                            <li><i class="fa fa-clock-o"></i> AUGUST 6, 2017</li>
+                            <li><i class="fa fa-comments"></i> 3 Comments</li>
+                        </ul>
+                      <h4 class="card-title mb-4"><a href="blog-details.html">The Death Of architechture</a></h4>
+                      <p class="card-text">We’re a philosophical bunch here at School site and we have thought long and hard about.</p> 
+                      <a class="btn btn-primary btn-round btn-sm" href="blog-details.html"> Read More </a>
+                    </div>
+                  </div><!-- card -->                
+                  <div class="card mb-5"> 
+                    <img class="card-img-top" src="assets/images/blog/blog-thumbnail2.jpg" alt="image">
+                    <div class="card-body p-25"> 
+                        <ul class="list-inline primary-color mb-3">
+                            <li><i class="fa fa-clock-o"></i> AUGUST 6, 2017</li>
+                            <li><i class="fa fa-comments"></i> 3 Comments</li>
+                        </ul>
+                      <h4 class="card-title mb-4"><a href="blog-details.html">Aenean id ullamcorper</a></h4>
+                      <p class="card-text">We’re a philosophical bunch here at School site and we have thought long and hard about.</p> 
+                      <a class="btn btn-primary btn-round btn-sm" href="blog-details.html"> Read More </a>
+                    </div>
+                  </div><!-- card -->
+       
+                  <div class="card mb-5"> 
+                    <img class="card-img-top" src="assets/images/blog/blog-thumbnail3.jpg" alt="image">
+                    <div class="card-body p-25"> 
+                        <ul class="list-inline primary-color mb-3">
+                            <li><i class="fa fa-clock-o"></i> AUGUST 6, 2017</li>
+                            <li><i class="fa fa-comments"></i> 3 Comments</li>
+                        </ul>
+                      <h4 class="card-title mb-4"><a href="blog-details.html">The Death Of architechture</a></h4>
+                      <p class="card-text">We’re a philosophical bunch here at School site and we have thought long and hard about.</p> 
+                      <a class="btn btn-primary btn-round btn-sm" href="blog-details.html"> Read More </a>
+                    </div>
+                  </div><!-- card -->         
+                  <div class="card mb-5"> 
+                    <img class="card-img-top" src="assets/images/blog/blog-thumbnail1.jpg" alt="image">
+                    <div class="card-body p-25"> 
+                        <ul class="list-inline primary-color mb-3">
+                            <li><i class="fa fa-clock-o"></i> AUGUST 6, 2017</li>
+                            <li><i class="fa fa-comments"></i> 3 Comments</li>
+                        </ul>
+                      <h4 class="card-title mb-4"><a href="blog-details.html">The Death Of architechture</a></h4>
+                      <p class="card-text">We’re a philosophical bunch here at School site and we have thought long and hard about.</p> 
+                      <a class="btn btn-primary btn-round btn-sm" href="blog-details.html"> Read More </a>
+                    </div>
+                  </div><!-- card -->    
+                </div><!-- blog-carousel -->
+            </div><!-- blog-carousel -->
+        </div>
+    </div> <!-- blog area end -->
+	
 <?php
-include("footer.php");
+include("footer.php"); 
 ?>

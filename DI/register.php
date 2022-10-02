@@ -6,6 +6,26 @@ include("registration.php");
 <html class="no-js" lang="en">
 
 <head>
+<script
+  src="https://code.jquery.com/jquery-3.6.1.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"></script>
+
+    <!--<script>
+
+		$(document).on('click', "#submitbtn" , function() 
+		{
+			let emailAddress = $("#emailaddress").val();
+			let checkValidEmailURL = "https://emailvalidation.abstractapi.com/v1/?api_key=1b7adae9bb0d459c932da0ec81fb2779&email="+emailAddress;
+			$.getJSON(checkValidEmailURL, function(data) 
+			{
+				$("#em").html(data.deliverability);
+			})
+			
+		});
+		
+	</script>-->
+
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Employability.life</title>
@@ -29,6 +49,15 @@ include("registration.php");
 	
 <style>
 #textbox{
+	border-radius: 10px;
+	border: none;
+	height: 40px;
+	width: 250px;
+	background: #f5f3f2;	
+	margin-bottom: 20px;
+}
+
+#emailaddress{
 	border-radius: 10px;
 	border: none;
 	height: 40px;
@@ -78,6 +107,10 @@ include("registration.php");
 
 <script>
 	
+
+
+
+
 		function validateForm()
 		{
 			//Validation for Name
@@ -255,9 +288,8 @@ include("registration.php");
 			{
 				document.getElementById("msg13").innerHTML = "";
 			}
+			
 		}
-		
-		
 		
 		</script>
 
@@ -357,8 +389,8 @@ include("registration.php");
 					<span id="msg1"></span><br>
 					
 					<font size="5">Email</font>
-					<input type="email" id="textbox" name="email" style=" margin-left: 75px;"><br>
-					<span id="msg2"></span><br>
+					<input type="email" id="emailaddress" name="email" style=" margin-left: 75px;"><br>
+					<span id="em" value=""></span><span id="msg2"></span><br>
 					
 					<font size="5">Password</font>
 					<input type="password" id="textbox" name="password" style=" margin-left: 25px;"><br>
@@ -428,8 +460,8 @@ include("registration.php");
 					<span id="msg13"></span><br>
 			</div>
 			<div class="col-md-10 offset-md-4" ><br>
-				<button type ="submit" class="btn btn-primary btn-round" name="submit" style=" margin-left:35px;font-size: 20px; color:#E1E6E1;">Create Account</button>
-			</div>
+				<button type ="button" id="submitbtn" value="Submit" class="btn btn-primary btn-round" name="submit" style=" margin-left:35px;font-size: 20px; color:#E1E6E1;">Create Account</button>
+        <br></div>
 			</form>
 		</div>
         </div>

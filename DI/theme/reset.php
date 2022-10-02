@@ -164,10 +164,10 @@
                     </div>
                 </div>
             </div>
-			<div class="col-md-10 offset-md-2">
-				<div class="row">
+			<div class="col-md-10 offset-md-3">
+				<div class="row" style=" margin-left: 120px;">
 					<div id="loginform" align="center"><br><br><br>
-						<h1 id="login-head" style="margin-bottom:-30px; margin-top:-20px; margin-left:25px;">Login</h1>
+						<h1 id="login-head" style="margin-bottom:-30px; margin-top:-20px; margin-left:25px;">Reset Password</h1>
 						<form action="logg.php" method="post">
 							<font size="5">Email:</font>
 							<input type="input" id="textbox" name="email" style="margin-top: 80px; margin-left: 68px;" required><br>
@@ -177,13 +177,6 @@
 							<a href="reset.php">Forgot password? Reset Password</a>
 					</div>
 						</form>
-					<div id="register" align="center"><br><br><br>
-						<h1 id="register-head" style="margin-top:-20px; font-size:20px;">If you don't have an account then please register</h1>
-						<form>
-							<button type ="submit" href="#" class="btn btn-primary btn-round" style=" font-size: 18px; color:#E1E6E1;">Register with ATMC Credentials</button><br>
-							<br><a href="register.php" class="btn btn-primary btn-round" style=" font-size: 18px; color:#E1E6E1;">Register a New Account</a>
-						</form>
-					</div>
 				</div>
 			</div>
 	</div>

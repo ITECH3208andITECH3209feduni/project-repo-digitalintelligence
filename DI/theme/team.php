@@ -69,7 +69,7 @@
 											if(isset($_SESSION['name']))
 											{
 											?>
-												<li><a href="index2.php">Home</a></li>
+												<li ><a href="index2.php">Home</a></li>
 												<li><a href="course_details.php">Courses</a>
 													<ul class="submenu">
 														<li><a href="DI_main.php">Digital Intelligence</a></li>
@@ -84,13 +84,12 @@
 												<li><a href="news.php">News</a>
 												</li>
 												<li><a href="about.php">About</a></li>
-												<li><a href="contact.php">Contact</a></li>
 												<li><a href="support.php">Student Support</a></li></font>
 												<li><a href="login.php"><img src="assets/images/icon/p1.png" style="height:40px; width:40px;"></img>Profile</a>
 												<ul class="submenu">
 													<li><?php echo "<a href='#'>".$_SESSION['name'];?></a></li>
 													<li><a href="logout.php">Logout</a></li>
-												</ul>											
+												</ul>										
 											<?php
 												}
 												else

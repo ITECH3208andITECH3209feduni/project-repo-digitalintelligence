@@ -16,10 +16,12 @@ if (isset($_POST['submit']))
 	session_start();
 	$email=$_POST['email'];
 	$pass=$_POST['password'];
-	$sel2=mysqli_query($conn,"select name from students where email='$email'");
+	$sel2=mysqli_query($conn,"select * from students where email='$email'");
 	$row2 = mysqli_fetch_assoc($sel2);
 	$name =$row2['name'];
 	$_SESSION['name']=$name;
+	$sid = $row2['student_id'];
+	$_SESSION['student_id']=$sid;
 	$_SESSION['email']=$email;
 	$sel="select * from students where email='$email' and password='$pass'";
 	$row=mysqli_query($conn,$sel);
@@ -27,6 +29,8 @@ if (isset($_POST['submit']))
 	if($result > 0)
 	{
 		$_SESSION['name']=$name;
+		$_SESSION['student_id']=$sid;
+		$_SESSION['email']=$email;
 		header("location:index2.php");
 	}
 	else

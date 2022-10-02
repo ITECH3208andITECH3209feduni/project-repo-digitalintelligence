@@ -2,38 +2,52 @@
 
 $conn=mysqli_connect("localhost","root","","digitalintelligence") or die("conncetion fail");
 session_start();
+
+
 if (isset($_POST['submit']))
 {	
 	$type=$_POST['type'];
 	$sub=$_POST['subject'];
 	$msg=$_POST['message'];
-	$file=$_FILES['file'];
-	$fname=$_FILES['file']['name'];
-	$temp_name=$_FILES['file']['temp_name'];
-	$fsize=$_FILES['file']['size'];
-	$ferror=$_FILES['file']['error'];
-	$ftype=$_FILES['file']['type'];
 	
+	$target_dir = "tickets/";
+	$fileUp = $_FILES['file'];
+	$fname = $_FILES['file']['name'];
+	$fsize = $_FILES['file']['size'];
+	$tmp_name = $_FILES["file"]["tmp_name"];
+	$target_file = $target_dir . basename($_FILES["file"]["name"]);
+	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+	$uploadOk = 1;
 	
-	$fileext=explode('.', $fname);
-	$fileactualext=strtolower(end($fileext));
-	
-	$allowed=array('jpg','jpeg','png','pdf');
-	
-	if(in_array($fileactualext,$allowed))
+	if ($fsize > 10000000)
 	{
-		if($ferror ===0)
-		{
-			if ($fsize<1000000 )
-			{
-				$filedir='attachments/'.$fname;
-				move_uploaded_file($temp_name,$filedir);
-				header("Location: support.php");
-			}
-			
-		}
-		
+		$err = "Sorry, your file exceeds a limit of 100MB.";
+		$uploadOk = 0;
 	}
+	
+	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" ) 
+	{
+		$err = "Sorry, only JPG, JPEG, PNG & PDF files are allowed.";
+		$uploadOk = 0;
+	}
+	
+	if ($uploadOk == 0) 
+	{
+		$err = "OOPS! There was a problem uploading your File.";
+		// if everything is ok, try to upload file
+	} 
+	else 
+	{
+		if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) 
+		{
+			$err = "The file ". htmlspecialchars( basename( $fname)). " has been uploaded.";
+		} 
+		else 
+		{
+			$err = "Sorry, there was an error uploading your file.";
+		}
+	}
+  
 	if ($type =="Miscellaneous")
 	{
 		$rid=2;
@@ -43,25 +57,24 @@ if (isset($_POST['submit']))
 		$rid=1;
 	}
 	
-	$sel2=mysqli_query($conn,"select student_id from students where email='$email'");
-	$row2 = mysqli_fetch_assoc($sel2);
-	$sid =$row2['student_id'];
-	$_SESSION['student_id']=$sid;
-	$sql="INSERT INTO `tickets` (`ticket_id`, `query_type`, `subject`, `query`, `attatchments`, `ticket_status`, `resolver_id`, `student_id`) 	VALUES (NULL, '$type', '$sub', '$msg', '$fname', 'Open', $rid, '$sid')";
 	
-	echo $type, $sub, $msg, $fname, $fileext, $fileactualext, $email, $rid, $sid, $row2;
+	$sid = $_SESSION['student_id'];	
+	$email = $_SESSION['email'];
+	
+	$sql="INSERT INTO `tickets` (`ticket_id`, `query_type`, `subject`, `query`, `attachments`, `ticket_status`, `resolver_id`, `student_id`) 	VALUES (NULL, '$type', '$sub', '$msg', '$fname', 'Open', $rid, '$sid')";
+	
+	//echo $type, $sub, $msg, $fname, $email, $rid, $sid, $err;
 	if(mysqli_query($conn,$sql))
 	{
-		//$msg="Account registered Successfully";
-		//echo "<script type='text/javascript'>alert('$message');</script>";
-		//header("location:support.php?ticket_raised_successfully");	
+		$message="Ticket Raised Sucessfully";
+		echo "<script type='text/javascript'>alert('$message');</script>";
+		header("location:support.php?ticket_raised_successfully");	
 	} 
 	else
 	{
-		//$message="Invalid Details  |   Enter valid details";
-		//echo "<script type='text/javascript'>alert('$message');</script>";
-		//header("location:support.php?error404");
-		echo "error";
+		$message="Ticket not raised.";
+		echo "<script type='text/javascript'>alert('$message');</script>";
+		header("location:support.php?error404");
 	}
 }
 

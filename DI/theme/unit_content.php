@@ -84,7 +84,6 @@
 												<li><a href="news.php">News</a>
 												</li>
 												<li><a href="about.php">About</a></li>
-												<li><a href="contact.php">Contact</a></li>
 												<li><a href="support.php">Student Support</a></li></font>
 												<li><a href="login.php"><img src="assets/images/icon/p1.png" style="height:40px; width:40px;"></img>Profile</a>
 												<ul class="submenu">
@@ -158,7 +157,24 @@
 		</div>
 		
 		<div class="video-area">
-			<iframe src="https://player.vimeo.com/video/581449510?h=b8935c5a4f" style="position:absolute;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+		<?php 
+		$conn=mysqli_connect("localhost","root","");
+		if(!$conn)
+		{
+				echo "Not connected to server";
+		}
+
+		if(!mysqli_select_db($conn,"digitalintelligence"))
+		{
+				echo "Not connected to database";
+		}
+		
+		$sql = "SELECT `video_link` FROM `lectures` WHERE `unit_id`=1;";
+		$result = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($result);
+		$link = $row['video_link'];
+		
+		echo "<iframe src='".$link."' style='position:absolute;width:100%;height:100%;' frameborder='0' allow='autoplay; fullscreen; picture-in-picture' allowfullscreen></iframe>";?>
 		</div>
 			<script src="https://player.vimeo.com/api/player.js"></script>
 			<p><a href="https://vimeo.com/581449510">Meltdown in Tibet FULL VERSION = 40 mins = HD 1080p M4V</a> from <a href="https://vimeo.com/thunderhorsemedia">ThunderHorse Media</a> on <a href="https://vimeo.com">Vimeo</a>.</p>            </div>

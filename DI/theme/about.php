@@ -84,7 +84,6 @@
 												<li><a href="news.php">News</a>
 												</li>
 												<li class="active"><a href="about.php">About</a></li>
-												<li><a href="contact.php">Contact</a></li>
 												<li><a href="support.php">Student Support</a></li></font>
 												<li><a href="login.php"><img src="assets/images/icon/p1.png" style="height:40px; width:40px;"></img>Profile</a>
 												<ul class="submenu">

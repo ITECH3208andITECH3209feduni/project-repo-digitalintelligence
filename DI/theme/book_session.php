@@ -44,44 +44,86 @@
                     <div class="row align-items-center" style="height:100px;">
                         <div class="col-lg-3 col-sm-9">
                             <div class="logo">
-                                <a href="index.php"><img src="assets/images/icon/employability_logo.png" alt="logo"></a>
+							<?php	
+								session_start();
+								if(isset($_SESSION['name']))
+								{
+								?>
+									<a href="index2.php"><img src="assets/images/icon/employability_logo.png" alt="logo"></a>
+								<?php
+								}
+								else
+								{
+								?>
+									<a href="index2.php"><img src="assets/images/icon/employability_logo.png" alt="logo"></a>
+								<?php
+								}
+								?>
                             </div>
                         </div>
-                        <div class="col-xl-8 col-lg-7 d-none d-lg-block">
-                            <div class="main-menu" style="font-size:50px; width:900px;">
+						<div class="col-xl-11 col-lg-10 d-none d-lg-block">
+                            <div class="main-menu" style="margin-top:-20px; font-size:50px;">
                                 <nav>
-                                    <ul id="m_menu_active" class="active">
-                                        <li><a href="index2.php">Home</a>
-                                        </li>
-                                        <li class="active"><a href="course_details.php">Courses</a>
-                                            <ul class="submenu">
-                                                <li class="active"><a href="DI_main.php">Digital Intelligence</a></li>
-                                                <li><a href="course_details.php">Growth Mindset</a></li>
-												<li><a href="course_details.php">Career Intelligence</a></li>
-												<li><a href="course_details.php">Influence</a></li>
-												<li><a href="course_details.php">Cultural Intelligence</a></li>
-                                            </ul>
-                                        </li>
-										<li><a href="team.php">Team</a></li>
-										<li><a href="events.php">Events</a></li>
-										<li><a href="news.php">News</a>
-                                        </li>
-										<li><a href="about.php">About</a></li>
-                                        <li><a href="support.php">Student Support</a></li>
-										
-										<li><a href="login.php"><img src="assets/images/icon/p1.png" style="height:40px; width:40px;"></img>Profile</a>
-										<ul class="submenu">
-										<li><a href="index.php">Logout</a></li>
-										</ul>
-										</li>
+                                    <ul id="m_menu_active"class="active">
+									<?php	
+											if(isset($_SESSION['name']))
+											{
+											?>
+												<li><a href="index2.php">Home</a></li>
+												<li class="active"><a href="course_details.php">Courses</a>
+													<ul class="submenu">
+														<li><a href="DI_main.php">Digital Intelligence</a></li>
+														<li><a href="course_details.php">Growth Mindset</a></li>
+														<li><a href="course_details.php">Career Intelligence</a></li>
+														<li><a href="course_details.php">Influence</a></li>
+														<li><a href="course_details.php">Cultural Intelligence</a></li>
+													</ul>
+												</li>
+												<li><a href="team.php">Team</a></li>
+												<li><a href="events.php">Events</a></li>
+												<li><a href="news.php">News</a>
+												</li>
+												<li><a href="about.php">About</a></li>
+												<li><a href="support.php">Student Support</a></li></font>
+												<li><a href="login.php"><img src="assets/images/icon/p1.png" style="height:40px; width:40px;"></img>Profile</a>
+												<ul class="submenu">
+													<li><?php echo "<a href='#'>".$_SESSION['name'];?></a></li>
+													<li><a href="logout.php">Logout</a></li>
+												</ul>											
+											<?php
+												}
+												else
+												{
+											?>
+												<li class="active"><a href="index.php">Home</a></li>
+												<li><a href="course_details.php">Courses</a>
+													<ul class="submenu">
+														<li><a href="digitalintelligence.php">Digital Intelligence</a></li>
+														<li><a href="course_details.php">Growth Mindset</a></li>
+														<li><a href="course_details.php">Career Intelligence</a></li>
+														<li><a href="course_details.php">Influence</a></li>
+														<li><a href="course_details.php">Cultural Intelligence</a></li>
+													</ul>
+												</li>
+												<li><a href="team.php">Team</a></li>
+												<li><a href="events.php">Events</a></li>
+												<li><a href="news.php">News</a>
+												</li>
+												<li><a href="about.php">About</a></li>
+												<li><a href="contact.php">Contact</a></li>
+												<li><a class="btn btn-light btn-round" href="login.php">Log in</a></li>
+												<li><a href="register.php" class="btn btn-primary btn-round" class="active">Register</a></li>
+											<?php
+												}
+										?>
                                     </ul>
                                 </nav>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-		
         <!-- header bottom area end -->
     </header>
     <!-- header area end -->
@@ -113,104 +155,225 @@
         </div>
             <div class="row">  
                 <!-- course single start -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card mb-5">
-                        <div class="course-thumb">
-                            <img src="assets/images/team/anirudh.png" alt="image">
-                        </div>
-                        <center><div class="card-body  p-25"> 
-                            <div class="course-meta-title mb-4">
-                                <div class="course-meta-text" style="margin-left:20px;">
-                                    <h4><a href="digitalintelligence.php">Digital Intelligence</a></h4>
-									<span class="text-uppercase">Anirudh Phadke</span>
-                                </div>
-								
-                            </div>
-                           <a class="btn btn-primary btn-round" href="book_time.php">Book Session</a>
-                            
-                      </div></center><!-- card-body -->
-                    </div><!-- card -->
-                </div>
+				<?php 
+				
+				$con=mysqli_connect("localhost","root","","digitalintelligence");
+				$result=mysqli_query($con,"select * from tutors where id=1;");
+				$row=mysqli_fetch_array($result);
+				$tid=$row['id'];
+				$tname=$row['name'];
+				$tpro=$row['profile_pic'];
+				$tcourse=$row['course'];
+				$slot1=$row['slot1'];
+				$slot2=$row['slot2'];
+				$slot3=$row['slot3'];
+				$slot4=$row['slot4'];
+				$slot5=$row['slot5'];
+				$target_dir="assets/images/team/";
+				$target_file=$target_dir.$tpro;
+				if(file_exists($target_file))
+				{
+					$tpro=$row['profile_pic'];
+					$target_file=$target_dir.$tpro;
+				}
+				else
+				{
+					$tpro="pro.png";
+					$target_file=$target_dir.$tpro;
+				}
+				
+				echo "<div class='col-lg-4 col-md-6'>"; 
+					echo "<div class='card mb-5' style='width:350px; height: 370px;'>"; 
+					  
+					echo "<img src='".$target_file."' style='width:220px; height: 200px; margin-left:70px;' alt='image'>"; 
+					echo "<center>";
+						echo "<div class='card-body teacher-content p-25'>";  
+					    echo "<h4 class='card-title mb-1'>".$tcourse."</h4>";
+							echo "<span class='primary-color d-block mb-4'>".$tname."</span>";
+							echo "<form><a class='btn btn-primary btn-round' href='book_time.php?id=1'>Book Session</a></form>";
+						echo "</div>";
+					echo "</center>";
+					echo "</div><!-- card --> ";
+				echo "</div>";
+
+				?>
 				
 				<!-- course single start -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card mb-5">
-                        <div class="course-thumb">
-                            <img src="assets/images/team/abbas.png" alt="image">
-                        </div>
-                        <center><div class="card-body  p-25"> 
-                            <div class="course-meta-title mb-4">
-                                <div class="course-meta-text" style="margin-left:20px;">
-                                    <h4><a href="course_details.php">Growth Mindset</a></h4>
-									<span class="text-uppercase">Abbas Shaik</span>
-                                </div>
-																
-                            </div>
-                           <a class="btn btn-primary btn-round" href="book_time.php">Book Session</a>
-                            
-                      </div></center><!-- card-body -->
-                    </div><!-- card -->
-                </div>
+				<?php 
+				
+				$con=mysqli_connect("localhost","root","","digitalintelligence");
+				$result=mysqli_query($con,"select * from tutors where id=2;");
+				$row=mysqli_fetch_array($result);
+				$tid=$row['id'];
+				$tname=$row['name'];
+				$tpro=$row['profile_pic'];
+				$tcourse=$row['course'];
+				$slot1=$row['slot1'];
+				$slot2=$row['slot2'];
+				$slot3=$row['slot3'];
+				$slot4=$row['slot4'];
+				$slot5=$row['slot5'];
+				$target_dir="assets/images/team/";
+				$target_file=$target_dir.$tpro;
+				if(file_exists($target_file))
+				{
+					$tpro=$row['profile_pic'];
+					$target_file=$target_dir.$tpro;
+				}
+				else
+				{
+					$tpro="pro.png";
+					$target_file=$target_dir.$tpro;
+				}
+				
+				echo "<div class='col-lg-4 col-md-6'>"; 
+					echo "<div class='card mb-5' style='width:350px; height: 370px;'>"; 
+					  
+					echo "<img src='".$target_file."' style='width:220px; height: 200px; margin-left:70px;' alt='image'>"; 
+					echo "<center>";
+						echo "<div class='card-body teacher-content p-25'>";  
+					    echo "<h4 class='card-title mb-1'>".$tcourse."</h4>";
+							echo "<span class='primary-color d-block mb-4'>".$tname."</span>";
+							echo "<form><a class='btn btn-primary btn-round' href='book_time.php?id=2'>Book Session</a></form>";
+						echo "</div>";
+					echo "</center>";
+					echo "</div><!-- card --> ";
+				echo "</div>";
+
+				?>
+				
 				
 				<!-- course single start -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card mb-5">
-                        <div class="course-thumb">
-                            <img src="assets/images/team/marketa.png" alt="image">
-                        </div>
-                        <center><div class="card-body  p-25"> 
-                            <div class="course-meta-title mb-4">
-                                <div class="course-meta-text" style="margin-left:20px;">
-                                    <h4><a href="course_details.php">Career Intelligence</a></h4>
-									<span class="text-uppercase">Marketa Mojzisova</span>
-                                </div> 
-								
-                            </div>
-                            <a class="btn btn-primary btn-round" href="book_time.php">Book Session</a>
-                            
-                      </div></center><!-- card-body -->
-                    </div><!-- card -->
-                </div>
+				<?php 
+				
+				$con=mysqli_connect("localhost","root","","digitalintelligence");
+				$result=mysqli_query($con,"select * from tutors where id=3;");
+				$row=mysqli_fetch_array($result);
+				$tid=$row['id'];
+				$tname=$row['name'];
+				$tpro=$row['profile_pic'];
+				$tcourse=$row['course'];
+				$slot1=$row['slot1'];
+				$slot2=$row['slot2'];
+				$slot3=$row['slot3'];
+				$slot4=$row['slot4'];
+				$slot5=$row['slot5'];
+				$target_dir="assets/images/team/";
+				$target_file=$target_dir.$tpro;
+				if(file_exists($target_file))
+				{
+					$tpro=$row['profile_pic'];
+					$target_file=$target_dir.$tpro;
+				}
+				else
+				{
+					$tpro="pro.png";
+					$target_file=$target_dir.$tpro;
+				}
+				
+				echo "<div class='col-lg-4 col-md-6'>"; 
+					echo "<div class='card mb-5' style='width:350px; height: 370px;'>"; 
+					  
+					echo "<img src='".$target_file."' style='width:220px; height: 200px; margin-left:70px;' alt='image'>"; 
+					echo "<center>";
+						echo "<div class='card-body teacher-content p-25'>";  
+					    echo "<h4 class='card-title mb-1'>".$tcourse."</h4>";
+							echo "<span class='primary-color d-block mb-4'>".$tname."</span>";
+							echo "<form><a class='btn btn-primary btn-round' href='book_time.php?id=3'>Book Session</a></form>";
+						echo "</div>";
+					echo "</center>";
+					echo "</div><!-- card --> ";
+				echo "</div>";
+
+				?>
 				
 				<!-- course single start -->
-                <div class="col-lg-4 col-md-6" style="margin-left:190px;">
-                    <div class="card mb-5">
-                        <div class="course-thumb">
-                            <img src="assets/images/team/tabinda.png" alt="image">
-                        </div>
-                        <center><div class="card-body  p-25"> 
-                            <div class="course-meta-title mb-4">
-                                <div class="course-meta-text" style="margin-left:20px;">
-                                    <h4><a href="course_details.php">Influence</a></h4>
-									<span class="text-uppercase">Tabinda Khan</span>
-                                </div> 
-								
-                            </div>
-                            <a class="btn btn-primary btn-round" href="book_time.php">Book Session</a>
-                            
-                      </div></center><!-- card-body -->
-                    </div><!-- card -->
-                </div>
+				<?php 
+				
+				$con=mysqli_connect("localhost","root","","digitalintelligence");
+				$result=mysqli_query($con,"select * from tutors where id=4;");
+				$row=mysqli_fetch_array($result);
+				$tid=$row['id'];
+				$tname=$row['name'];
+				$tpro=$row['profile_pic'];
+				$tcourse=$row['course'];
+				$slot1=$row['slot1'];
+				$slot2=$row['slot2'];
+				$slot3=$row['slot3'];
+				$slot4=$row['slot4'];
+				$slot5=$row['slot5'];
+				$target_dir="assets/images/team/";
+				$target_file=$target_dir.$tpro;
+				if(file_exists($target_file))
+				{
+					$tpro=$row['profile_pic'];
+					$target_file=$target_dir.$tpro;
+				}
+				else
+				{
+					$tpro="pro.png";
+					$target_file=$target_dir.$tpro;
+				}
+				
+				echo "<div class='col-lg-4 col-md-6' style='margin-left:190px;'>"; 
+					echo "<div class='card mb-5' style='width:350px; height: 370px;'>"; 
+					  
+					echo "<img src='".$target_file."' style='width:220px; height: 200px; margin-left:70px;' alt='image'>"; 
+					echo "<center>";
+						echo "<div class='card-body teacher-content p-25'>";  
+					    echo "<h4 class='card-title mb-1'>".$tcourse."</h4>";
+							echo "<span class='primary-color d-block mb-4'>".$tname."</span>";
+							echo "<form><a class='btn btn-primary btn-round' href='book_time.php?id=4'>Book Session</a></form>";
+						echo "</div>";
+					echo "</center>";
+					echo "</div><!-- card --> ";
+				echo "</div>";
+
+				?>
 				
 				<!-- course single start -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card mb-5">
-                        <div class="course-thumb">
-                            <img src="assets/images/team/dinushi.png" alt="image">
-                        </div>
-                        <center><div class="card-body  p-25"> 
-                            <div class="course-meta-title mb-4">
-                                <div class="course-meta-text" style="margin-left:20px;">
-                                    <h4><a href="course_details.php">Cultural Intelligence</a></h4>
-									<span class="text-uppercase">Dinushi Bamunusinghe</span>
-                                </div> 
-								
-                            </div>
-                            <a class="btn btn-primary btn-round" href="book_time.php">Book Session</a>
-                            
-                      </div></center><!-- card-body -->
-                    </div><!-- card -->
-                </div>
+				<?php 
+				
+				$con=mysqli_connect("localhost","root","","digitalintelligence");
+				$result=mysqli_query($con,"select * from tutors where id=5;");
+				$row=mysqli_fetch_array($result);
+				$tid=$row['id'];
+				$tname=$row['name'];
+				$tpro=$row['profile_pic'];
+				$tcourse=$row['course'];
+				$slot1=$row['slot1'];
+				$slot2=$row['slot2'];
+				$slot3=$row['slot3'];
+				$slot4=$row['slot4'];
+				$slot5=$row['slot5'];
+				$target_dir="assets/images/team/";
+				$target_file=$target_dir.$tpro;
+				if(file_exists($target_file))
+				{
+					$tpro=$row['profile_pic'];
+					$target_file=$target_dir.$tpro;
+				}
+				else
+				{
+					$tpro="pro.png";
+					$target_file=$target_dir.$tpro;
+				}
+				
+				echo "<div class='col-lg-4 col-md-6'>"; 
+					echo "<div class='card mb-5' style='width:350px; height: 370px;'>"; 
+					  
+					echo "<img src='".$target_file."' style='width:220px; height: 200px; margin-left:70px;' alt='image'>"; 
+					echo "<center>";
+						echo "<div class='card-body teacher-content p-25'>";  
+					    echo "<h4 class='card-title mb-1'>".$tcourse."</h4>";
+							echo "<span class='primary-color d-block mb-4'>".$tname."</span>";
+							echo "<a class='btn btn-primary btn-round' href='book_time.php?id=5'>Book Session</a>";
+						echo "</div>";
+					echo "</center>";
+					echo "</div><!-- card --> ";
+				echo "</div>";
+
+				?>
 				
 			</div>
 		</div>

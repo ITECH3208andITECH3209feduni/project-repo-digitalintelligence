@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -18,10 +19,71 @@
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!--color css-->
     <link rel="stylesheet" id="triggerColor" href="assets/css/triggerplate/color-0.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<!--<script>
+	
+		var date= new Date();
+		var tdate= date.getDate();
+		var tmonth= date.getMonth()+1;
+		var tyear= date.getUTCFullYear();
+		if (tmonth<10)
+		{
+			tmonth="0"+tmonth;
+		}
+		if (tdate<10)
+		{
+			tdate="0"+tdate;
+		}
+		var curdate = tyear + "-" + tmonth + "-" + tdate;
+		
+	
+	</script>-->
+	
+<style>
+
+html,body{
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	overflow-x: hidden;
+}
+
+#supportform {
+	margin-bottom: 200px;
+	width: 800px;
+	height: 450px;
+	color: #2C363F;
+	border-radius: 30px;
+	background: #ffdda6;
+	align: center;
+}
+
+#textbox{
+	border-radius: 10px;
+	border: none;
+	height: 40px;
+	width: 280px;
+	background: #f5f3f2;	
+	margin-bottom: 30px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align: center;
+}
+
+
+
+</style>
+
+
 
 </head>
 
@@ -44,44 +106,86 @@
                     <div class="row align-items-center" style="height:100px;">
                         <div class="col-lg-3 col-sm-9">
                             <div class="logo">
-                                <a href="index.php"><img src="assets/images/icon/employability_logo.png" alt="logo"></a>
+							<?php	
+								session_start();
+								if(isset($_SESSION['name']))
+								{
+								?>
+									<a href="index2.php"><img src="assets/images/icon/employability_logo.png" alt="logo"></a>
+								<?php
+								}
+								else
+								{
+								?>
+									<a href="index2.php"><img src="assets/images/icon/employability_logo.png" alt="logo"></a>
+								<?php
+								}
+								?>
                             </div>
                         </div>
-                        <div class="col-xl-8 col-lg-7 d-none d-lg-block">
-                            <div class="main-menu" style="font-size:50px; width:900px;">
+						<div class="col-xl-11 col-lg-10 d-none d-lg-block">
+                            <div class="main-menu" style="margin-top:-20px; font-size:50px;">
                                 <nav>
-                                    <ul id="m_menu_active" class="active">
-                                        <li><a href="index2.php">Home</a>
-                                        </li>
-                                        <li class="active"><a href="course_details.php">Courses</a>
-                                            <ul class="submenu">
-                                                <li class="active"><a href="DI_main.php">Digital Intelligence</a></li>
-                                                <li><a href="course_details.php">Growth Mindset</a></li>
-												<li><a href="course_details.php">Career Intelligence</a></li>
-												<li><a href="course_details.php">Influence</a></li>
-												<li><a href="course_details.php">Cultural Intelligence</a></li>
-                                            </ul>
-                                        </li>
-										<li><a href="team.php">Team</a></li>
-										<li><a href="events.php">Events</a></li>
-										<li><a href="news.php">News</a>
-                                        </li>
-										<li><a href="about.php">About</a></li>
-                                        <li><a href="support.php">Student Support</a></li>
-										
-										<li><a href="login.php"><img src="assets/images/icon/p1.png" style="height:40px; width:40px;"></img>Profile</a>
-										<ul class="submenu">
-										<li><a href="index.php">Logout</a></li>
-										</ul>
-										</li>
+                                    <ul id="m_menu_active"class="active">
+									<?php	
+											if(isset($_SESSION['name']))
+											{
+											?>
+												<li><a href="index2.php">Home</a></li>
+												<li class="active"><a href="course_details.php">Courses</a>
+													<ul class="submenu">
+														<li><a href="DI_main.php">Digital Intelligence</a></li>
+														<li><a href="course_details.php">Growth Mindset</a></li>
+														<li><a href="course_details.php">Career Intelligence</a></li>
+														<li><a href="course_details.php">Influence</a></li>
+														<li><a href="course_details.php">Cultural Intelligence</a></li>
+													</ul>
+												</li>
+												<li><a href="team.php">Team</a></li>
+												<li><a href="events.php">Events</a></li>
+												<li><a href="news.php">News</a>
+												</li>
+												<li><a href="about.php">About</a></li>
+												<li><a href="support.php">Student Support</a></li></font>
+												<li><a href="login.php"><img src="assets/images/icon/p1.png" style="height:40px; width:40px;"></img>Profile</a>
+												<ul class="submenu">
+													<li><?php echo "<a href='#'>".$_SESSION['name'];?></a></li>
+													<li><a href="logout.php">Logout</a></li>
+												</ul>											
+											<?php
+												}
+												else
+												{
+											?>
+												<li class="active"><a href="index.php">Home</a></li>
+												<li><a href="course_details.php">Courses</a>
+													<ul class="submenu">
+														<li><a href="digitalintelligence.php">Digital Intelligence</a></li>
+														<li><a href="course_details.php">Growth Mindset</a></li>
+														<li><a href="course_details.php">Career Intelligence</a></li>
+														<li><a href="course_details.php">Influence</a></li>
+														<li><a href="course_details.php">Cultural Intelligence</a></li>
+													</ul>
+												</li>
+												<li><a href="team.php">Team</a></li>
+												<li><a href="events.php">Events</a></li>
+												<li><a href="news.php">News</a>
+												</li>
+												<li><a href="about.php">About</a></li>
+												<li><a href="contact.php">Contact</a></li>
+												<li><a class="btn btn-light btn-round" href="login.php">Log in</a></li>
+												<li><a href="register.php" class="btn btn-primary btn-round" class="active">Register</a></li>
+											<?php
+												}
+										?>
                                     </ul>
                                 </nav>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-		
         <!-- header bottom area end -->
     </header>
     <!-- header area end -->
@@ -99,19 +203,85 @@
     </div>
     <!-- crumbs area end -->
 	
+    	
     <!-- Form Start -->
+	
 	<div class="register-neumorphic-div-body" style="background-color:#e3e2e1;">
 		<div class="row">
-		
-		<div class="col-md-10 offset-md-1" style="margin-top:70px;">
-                    <div class="cnt-title">
-                        <h4><span>Book Your Session With</span></h4>
-                    </div>
-        </div>
-			
+			<div class="col-md-10 offset-md-1" style="margin-top:70px;">
+				<div class="cnt-title">
+				<?php 
+	
+				$con=mysqli_connect("localhost","root","","digitalintelligence");
+				$id=$_GET['id'];
+				$result=mysqli_query($con,"select * from tutors where id='$id';");
+				$row=mysqli_fetch_array($result);
+				$tid=$row['id'];
+				$tname=$row['name'];
+				$tpro=$row['profile_pic'];
+				$tcourse=$row['course'];
+				$slot1=$row['slot1'];
+				$slot2=$row['slot2'];
+				$slot3=$row['slot3'];
+				$slot4=$row['slot4'];
+				$slot5=$row['slot5'];
+				$target_dir="assets/images/team/";
+				$target_file=$target_dir.$tpro;
+				if(file_exists($target_file))
+				{
+					$tpro=$row['profile_pic'];
+					$target_file=$target_dir.$tpro;
+				}
+				else
+				{
+					$tpro="pro.png";
+					$target_file=$target_dir.$tpro;
+				}
+				
+				echo "<h4><span>Book Your Session with ".$tname."</span></h4>";
+				echo "<br><img src='".$target_file."' style='width:220px; height: 200px;' alt='image'>"; 
+
+				?>
+				</div>
+			</div>	
+			<div  class="col-md-10 offset-md-3" >
+				<div style="margin-left:230px;">
+					<div id="supportform" align="center">
+						<form action="confirmbooksess.php" name="support" method="post" onsubmit="return validateForm()">
+							<br><br><font size="5">Select Date:</font><br><br>
+							<input type="date" id="textbox" name="date" placeholder="Choose from the Available Dates"><br><br>
+							<font size="5">Select Time Slot:</font><br><br>
+							<div class="rows">
+								<font size="5" color="#F58120">
+								<?php
+								echo "<input type='radio' name='time' value='".$slot1."'>".$slot1;
+								echo "&emsp;<input type='radio' name='time' value='".$slot2."'>".$slot2;
+								echo "&emsp;<input type='radio' name='time' value='".$slot3."'>".$slot3;
+								echo "<br><input type='radio' name='time' value='".$slot4."'>".$slot4;
+								echo "&emsp;<input type='radio' name='time' value='".$slot5."'>".$slot5;
+								echo "<input type='hidden' name='id' value='".$id."'>";
+								
+								?>
+								
+								</font>
+							</div><br><br>
+							<input type ="submit" class="btn btn-dark btn-round" value="Book" name="submit" style=" font-size: 18px; color:#E1E6E1;">
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
     <!-- Form End -->
+	<script>
+	config = 
+		{
+			minDate: "today",
+			maxDate: new Date().fp_incr(28) // 14 days from now
+		}
+	
+		flatpickr("input[type=date]", config);
+	</script>
 
 
 <?php

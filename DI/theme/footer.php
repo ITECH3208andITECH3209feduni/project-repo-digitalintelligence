@@ -1,4 +1,5 @@
-    <!-- footer area start -->
+   
+   <!-- footer area start -->
     <footer>
         <div class="footer-top has-color pt--120 pb--30">
             <div class="container">
@@ -8,7 +9,7 @@
                             <a href="index.html"><img src="assets/images/icon/atmc_logo.png" alt="image"></a>
                             <div class="address">
                                 <h6>ATMC ADDRESS</h6>
-                                <p>399 Lonsdale Street, Melbourne VIC. Australia</p>
+                                <p>399 Lonsdale Street, Melbourne VIC, Australia</p>
                             </div>
                             <div class="address">
                                 <h6>BUSINESS PHONE</h6>
@@ -16,7 +17,7 @@
                             </div>
                             <div class="address">
                                 <h6>BUSINESS EMAIL</h6>
-                                <p>employability.life@gmail.com.au</p>
+                                <p>hello@employability.life</p>
                             </div>
                             <ul class="social">
                                 <li><a href="https://www.facebook.com/employabilitylife"><i class="fa fa-facebook"></i></a></li>
@@ -41,12 +42,11 @@
                     <div class="col-md-5">
                         <div class="widget widget-opening">
                             <h4 class="fwidget-title mb-5 pb-3 primary-color">Working Day & time</h4>
-                            <p>Architecto beatae vitae dicta sunt ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</p>
+                            <p>We are looking forward to meeting you online or on campus!</p>
                            <ul>
-                                <li><span>Mon - Tus :</span>6.00 am - 10.00 pm</li>
-                                <li><span>Wed - Tur :</span>8.00 am - 6.00 pm</li>
-                                <li><span>Friday :</span>3.00 pm - 8.00 pm</li>
-                                <li><span>Sunday :</span>Closed</li>
+                                <li><span>Monday - Thursday :</span>9:00 am - 7:00 pm</li>
+                                <li><span>Friday :</span>9:00 am - 5:00 pm</li>
+                                <li><span>Saturday - Sunday :</span>Closed</li>
                             </ul>
                         </div>
                     </div>
@@ -70,6 +70,9 @@
     <script src="assets/js/jquery.slicknav.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
+	
+	
+
 </body>
 
 </html>

@@ -2,6 +2,47 @@
 <html class="no-js" lang="en">
 
 <head>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" ></script>
+  
+<script>
+    $.ajax({
+        headers: {
+            "Accept": "application/json",//depends on your api
+            "Authorization": "fce65f45310e42179e35918215c9e31b",
+
+        }, url: "https://newsapi.org/v2/top-headlines?country=au&apiKey=fce65f45310e42179e35918215c9e31b",
+        success: function (response) {
+            let size = 6;
+            let oldnews = response.articles;
+            let news = oldnews.sort(() => Math.random() - Math.random()).slice(0, size)
+
+            var table = document.getElementById("list");
+
+            console.log(news);
+            let divstr = ""
+            for (let i = 0; i < news.length; i++) {
+                let newsimage = news[i].urlToImage;
+                let newstitle = news[i].title;
+                let newsdesc = news[i].description;
+                let newsurl=news[i].url;
+                divstr = divstr + `<div class='card mb-5'>
+                            <img class='card-img-top' src="${newsimage}"alt='image' height='50' width='50'/>
+                            <div class='card-body p-25'>
+                            <h4 class='card-title mb-4'><a href="${newsurl}">${newstitle}</a></h4>
+                            <p class='card-text'>${newsdesc}</p>
+                            <a class='btn btn-primary btn-round btn-sm' href="${newsurl}"> Read More </a>
+                            </div>
+                        </div>`;
+            }
+
+            $("#news").html(divstr);
+
+        }
+    });
+
+</script>
+
+
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Employability.life</title>
@@ -18,6 +59,12 @@
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+
+
+
+    
+
+
     <!--color css-->
     <link rel="stylesheet" id="triggerColor" href="assets/css/triggerplate/color-0.css">
     <!-- modernizr css -->
@@ -84,7 +131,6 @@
 												<li class="active"><a href="news.php">News</a>
 												</li>
 												<li><a href="about.php">About</a></li>
-												<li><a href="contact.php">Contact</a></li>
 												<li><a href="support.php">Student Support</a></li></font>
 												<li><a href="login.php"><img src="assets/images/icon/p1.png" style="height:40px; width:40px;"></img>Profile</a>
 												<ul class="submenu">
@@ -156,56 +202,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="blog-carousel owl-carousel card-deck">                     
-                  <div class="card mb-5"> 
-                    <img class="card-img-top" src="assets/images/blog/blog-thumbnail1.jpg" alt="image">
-                    <div class="card-body p-25"> 
-                        <ul class="list-inline primary-color mb-3">
-                            <li><i class="fa fa-clock-o"></i> AUGUST 6, 2017</li>
-                            <li><i class="fa fa-comments"></i> 3 Comments</li>
-                        </ul>
-                      <h4 class="card-title mb-4"><a href="blog-details.html">The Death Of architechture</a></h4>
-                      <p class="card-text">We’re a philosophical bunch here at School site and we have thought long and hard about.</p> 
-                      <a class="btn btn-primary btn-round btn-sm" href="blog-details.html"> Read More </a>
-                    </div>
-                  </div><!-- card -->                
-                  <div class="card mb-5"> 
-                    <img class="card-img-top" src="assets/images/blog/blog-thumbnail2.jpg" alt="image">
-                    <div class="card-body p-25"> 
-                        <ul class="list-inline primary-color mb-3">
-                            <li><i class="fa fa-clock-o"></i> AUGUST 6, 2017</li>
-                            <li><i class="fa fa-comments"></i> 3 Comments</li>
-                        </ul>
-                      <h4 class="card-title mb-4"><a href="blog-details.html">Aenean id ullamcorper</a></h4>
-                      <p class="card-text">We’re a philosophical bunch here at School site and we have thought long and hard about.</p> 
-                      <a class="btn btn-primary btn-round btn-sm" href="blog-details.html"> Read More </a>
-                    </div>
-                  </div><!-- card -->
-       
-                  <div class="card mb-5"> 
-                    <img class="card-img-top" src="assets/images/blog/blog-thumbnail3.jpg" alt="image">
-                    <div class="card-body p-25"> 
-                        <ul class="list-inline primary-color mb-3">
-                            <li><i class="fa fa-clock-o"></i> AUGUST 6, 2017</li>
-                            <li><i class="fa fa-comments"></i> 3 Comments</li>
-                        </ul>
-                      <h4 class="card-title mb-4"><a href="blog-details.html">The Death Of architechture</a></h4>
-                      <p class="card-text">We’re a philosophical bunch here at School site and we have thought long and hard about.</p> 
-                      <a class="btn btn-primary btn-round btn-sm" href="blog-details.html"> Read More </a>
-                    </div>
-                  </div><!-- card -->         
-                  <div class="card mb-5"> 
-                    <img class="card-img-top" src="assets/images/blog/blog-thumbnail1.jpg" alt="image">
-                    <div class="card-body p-25"> 
-                        <ul class="list-inline primary-color mb-3">
-                            <li><i class="fa fa-clock-o"></i> AUGUST 6, 2017</li>
-                            <li><i class="fa fa-comments"></i> 3 Comments</li>
-                        </ul>
-                      <h4 class="card-title mb-4"><a href="blog-details.html">The Death Of architechture</a></h4>
-                      <p class="card-text">We’re a philosophical bunch here at School site and we have thought long and hard about.</p> 
-                      <a class="btn btn-primary btn-round btn-sm" href="blog-details.html"> Read More </a>
-                    </div>
-                  </div><!-- card -->    
+                <div class="blog-carousel owl-carousel card-deck" id="news">                     
+                                 
+                    
                 </div><!-- blog-carousel -->
             </div><!-- blog-carousel -->
         </div>

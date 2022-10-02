@@ -21,7 +21,7 @@ if(isset($_POST['submit']))
 	$cov=$_POST['coverletter'];
 	$linkedin=$_POST['linkedin'];
 	$inte=$_POST['interests'];
-	echo $emp, $resu, $cov, $linkedin;
+	//echo $emp, $resu, $cov, $linkedin;
 
 	$sql="INSERT INTO `students` (`student_id`, `name`, `email`, `password`, `address`, `mobile`, `profile_pic`, `employment_status`, `desired_job`, `desired_company`, `resume`, `cover_letter`, `linkedin`) 	VALUES (NULL, '$name', '$email', '$pass', '$add', '$cont', NULL, '$emp', '$job', '$comp', '$resu', '$cov ', '$linkedin')";
 	

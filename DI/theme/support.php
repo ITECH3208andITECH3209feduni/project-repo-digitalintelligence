@@ -35,9 +35,8 @@ html,body{
 
 #supportform {
 	margin-bottom: 200px;
-	margin-left:50%;
 	width: 800px;
-	height: 800px;
+	height: 700px;
 	color: #2C363F;
 	border-radius: 30px;
 	background: #ffdda6;
@@ -134,7 +133,6 @@ html,body{
 												<li><a href="news.php">News</a>
 												</li>
 												<li><a href="about.php">About</a></li>
-												<li><a href="contact.php">Contact</a></li>
 												<li class="active"><a href="support.php">Student Support</a></li></font>
 												<li><a href="login.php"><img src="assets/images/icon/p1.png" style="height:40px; width:40px;"></img>Profile</a>
 												<ul class="submenu">
@@ -205,36 +203,36 @@ html,body{
                     </div>
         </div>
 				
-			<center>
-			
-			<form action="ticket.php" name="support" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
-			<div id="supportform" align="center">
-					
-					<font size="5">Type:</font>
-					<select id="textbox" name="type" style=" margin-left: 85px; margin-top:80px; width:400px;">
-						<option value="default">--Select type--</option>
-						<option value="Miscellaneous">Student Support (Misc)</option>
-						<option value="Submissions">Submissions</option>
-						<option value="Special Considerations">Special Considerations</option>
-					</select><br>
-					<span id="msg1"></span><br>
-					
-					<font size="5">Subject:</font>
-					<input type="input" id="textbox" name="subject" style="margin-left: 55px; width:400px;"><br>
-					<span id="msg2"></span><br>
-					<font size="5">Email:</font>
-					<input type="input" id="textbox" name="email" style="margin-left: 75px; width:400px;"><br>
-					<span id="msg3"></span><br>
-					
-					<font size="5">Message:</font>
-					<input type="input" id="textbox" name="message" style="height: 200px; margin-left: 42px; width:400px;"><br>
-					<span id="msg4"></span><br>
-					
-					<input type="File" name="file" style=" margin-left: 115px;"><br>
-					<span id="msg5"></span><br>
-					<input type ="submit" id="neumorphic-button-support" value="Raise Ticket" name="submit" style=" font-size: 18px; color:#E1E6E1;">
+			<div  class="col-md-10 offset-md-3" >
+				<div style="margin-left:200px;">
+					<div id="supportform" align="center">
+						<form action="ticket.php" name="support" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+							<font size="5">Type:</font>
+							<select id="textbox" name="type" style=" margin-left: 85px; margin-top:80px; width:400px;">
+								<option value="default">--Select type--</option>
+								<option value="Miscellaneous">Student Support (Misc)</option>
+								<option value="Submissions">Submissions</option>
+								<option value="Special Considerations">Special Considerations</option>
+							</select><br>
+							<span id="msg1"></span><br>
+							
+							<font size="5">Subject:</font>
+							<input type="input" id="textbox" name="subject" style="margin-left: 55px; width:400px;"><br>
+							<span id="msg2"></span><br>
+							
+							
+							<font size="5">Message:</font>
+							<input type="input" id="textbox" name="message" style="height: 200px; margin-left: 42px; width:400px;"><br>
+							<span id="msg3"></span><br>
+							
+							<font size="5">Attachments:</font>
+							<input type="File" name="file" style=" margin-left: 50px;"><br>
+							<span id="msg4"></span><br>
+							<input type ="submit" class="btn btn-dark btn-round" value="Raise Ticket" name="submit" style=" font-size: 18px; color:#E1E6E1;">
+						</form>
+					</div>
+				</div>
 			</div>
-			</form>
 		</div>
 	</div>
     <!-- Form End -->
