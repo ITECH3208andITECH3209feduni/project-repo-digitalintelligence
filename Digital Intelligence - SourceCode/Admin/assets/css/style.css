@@ -1,0 +1,13 @@
+
+.report_container
+{
+	
+}
+.year_div,.month_div,.date_div,.student_div
+{
+	text-align: center;
+}
+.year_div>button,.month_div>button,.date_div>button,.student_div>button
+{
+	padding: 20px;
+}
